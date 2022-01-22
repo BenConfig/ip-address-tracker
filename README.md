@@ -28,6 +28,7 @@ Users should be able to:
 - JavaScript
 - IP Geolocation API by IPify
 - LeafletJS API
+- Postman
 
 ## What I learned
 
