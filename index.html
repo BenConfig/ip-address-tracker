@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Frontend Mentor | IP Address Tracker</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+  </head>
+
+  <body>
+
+    <header class="header">
+
+      <h1 class="h1">IP Address Tracker</h1>
+
+      <!-- IP Search Form -->
+      <form class="form">
+        <label class="sr-only" for="ip-search">Enter an IP Address</label>
+        <input
+          class="ip-search"
+          type="text"
+          id="ip-search"
+          name="ip-address"
+          placeholder="Enter an IP Address">
+        <button
+          class="ip-search-btn"
+          type="submit"
+          aria-label="Search for any IP address or domain"></button>
+        <p class="error-message" id="error-message">Invalid IP address</p>
+      </form>
+
+      <!-- Results of IP Search -->
+      <div class="results" id="results">
+
+        <!-- IP Address -->
+        <section class="result">
+          <h2 class="result-heading">IP Address</h2>
+          <p class="result-value" id="ip"><!-- Value retrieved using the API --></p>
+        </section>
+
+        <!-- Location -->
+        <section class="result">
+          <h2 class="result-heading">Location</h2>
+          <p class="result-value" id="location"><!-- Value retrieved using the API --></p>
+        </section>
+
+        <!-- Time Zone -->
+        <section class="result">
+          <h2 class="result-heading">Timezone</h2>
+          <p class="result-value" id="time-zone"><!-- Value retrieved using the API --></p>
+        </section>
+
+        <!-- ISP -->
+        <section class="result">
+          <h2 class="result-heading">ISP</h2>
+          <p class="result-value" id="isp"><!-- Value retrieved using the API --></p>
+        </section>
+
+      </div>
+      
+    </header>
+
+    <!-- Map Display -->
+    <main
+      class="main"
+      id="map"
+      aria-label="Map of general and location"
+      aria-describedby="results"></main>
+    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <script src="main.js"></script>
+  </body>
+
+</html>

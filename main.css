@@ -1,0 +1,232 @@
+/* ------------------------------------------------------ */
+/*                          Fonts                         */
+/* ------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* ------------------------------------------------------ */
+/*                    Custom Properties                   */
+/* ------------------------------------------------------ */
+:root {
+    /* Font Weights */
+    --fw-normal: 400;
+    --fw-bold: 500;
+
+    /* Border Radii */
+    --br-md: 1rem;
+
+    /* Box Shadows */
+    --bs-md: 0 2rem 2rem -1rem hsla(0, 0%, 0%, .2);
+
+    /* Colors */
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-gray: hsl(0, 0%, 59%);
+    --clr-dark-gray: hsl(0, 0%, 17%);
+    --clr-black: hsl(0, 0%, 0%);
+
+    /* Sizes */
+    --header-height: 17.5rem;
+    --max-width: 20.5rem;
+}
+
+/* ------------------------------------------------------ */
+/*                Resets and Global Styles                */
+/* ------------------------------------------------------ */
+body, p,
+h1, h2,
+input,
+button { margin: 0; }
+
+input,
+button {
+    min-width: 44px;
+    min-height: 44px;
+    border: none;
+    cursor: pointer;
+}
+
+.sr-only {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font: var(--fw-normal) 1.25rem/1.2 'Rubik', sans-serif;
+    text-align: center;
+    color: var(--clr-dark-gray);
+    background: var(--clr-dark-gray);
+}
+
+:focus { outline-offset: -2px; }
+
+/* ------------------------------------------------------ */
+/*                         Header                         */
+/* ------------------------------------------------------ */
+header {
+    position: relative;
+    height: var(--header-height);
+    padding: 1.625rem 1.5rem;
+    background: url('images/pattern-bg.png') center / max(1440px, 100%) 100%;
+}
+
+.h1 {
+    max-width: var(--max-width);
+    font-size: 1.5625rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 1.8125rem;
+    color: var(--clr-white);
+}
+
+/* --------------- IP Address Search Form --------------- */
+.form {
+    position: relative;
+    display: flex;
+    max-width: var(--max-width);
+    border-radius: var(--br-md);
+}
+
+.ip-search {
+    flex: 1;
+    font-size: 1.125rem;
+    font-family: inherit;
+    padding: 1rem .5rem 1rem 1.5rem;
+    border-radius: var(--br-md) 0 0 var(--br-md);
+    color: inherit;
+}
+
+.ip-search:focus {
+    outline: 2px dotted currentColor;
+    outline-offset: -2px;
+}
+
+.ip-search-btn {
+    position: relative;
+    width: 3.625rem;
+    aspect-ratio: 1;
+    border-radius: 0 var(--br-md) var(--br-md) 0;
+    background: var(--clr-black) url('images/icon-arrow.svg') no-repeat center;
+}
+
+.ip-search-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--clr-white);
+    opacity: 0;
+    transition: opacity 250ms;
+}
+
+.ip-search-btn:hover::before { opacity: .25; }
+
+.ip-search-btn:focus {
+    outline: 2px dotted var(--clr-white);
+    outline-offset: -2px;
+}
+
+.ip-search-btn:not(:focus-visible) { outline: none; }
+
+.ip-search-btn-visible {
+    outline: 2px dotted var(--clr-white);
+    outline-offset: -2px;
+  }
+
+.error-message {
+    visibility: hidden;
+    position: absolute;
+    z-index: 9999;
+    top: calc(100% + .125rem);
+    font-size: .875rem;
+    font-style: italic;
+    margin-left: 1.5rem;
+    color: var(--clr-white);
+    opacity: .8;
+}
+
+.error-message.show { visibility: initial; }
+
+/* ---------------- Results of IP Search ---------------- */
+.results {
+    position: absolute;
+    z-index: 999;
+    inset: calc(100% - 7.0625rem) 1.5rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4375rem 3rem;
+    max-width: var(--max-width);
+    font-weight: var(--fw-bold);
+    padding: 1.5625rem;
+    border-radius: var(--br-md);
+    box-shadow: var(--bs-md);
+    background: var(--clr-white);
+}
+
+.result-heading {
+    font-size: .625rem;
+    font-weight: inherit;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+    color: var(--clr-gray);
+}
+
+/* ------------------------------------------------------ */
+/*                       Map Display                      */
+/* ------------------------------------------------------ */
+.main {
+    position: relative;
+    height: calc(100vh - var(--header-height));
+}
+
+/* ------------------------------------------------------ */
+/*                     Large Viewport                     */
+/* ------------------------------------------------------ */
+@media only screen and (min-width: 78rem) {
+    .header { padding-top: 1.875rem; }
+
+    .h1 {
+        font-size: 1.9375rem;
+        margin: 0 auto 1.6875rem;
+    }
+
+    .form {
+        max-width: 34.6875rem;
+        margin: 0 auto;
+    }
+    
+    .results {
+        top: calc(100% - 5rem);
+        flex-direction: row;
+        text-align: left;
+        max-width: 69.375rem;
+        margin: auto;
+    }
+
+    .result {
+        flex: 1;
+        position: relative;
+        padding: .6875rem .5rem;
+    }
+
+    .result:not(:last-of-type)::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -1.5rem;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 4.68265rem;
+        background: var(--clr-gray);
+        opacity: .5;
+    }
+
+    .result-heading {
+        font-size: .8125rem;
+        letter-spacing: .1em;
+        margin-bottom: .75rem;
+    }
+
+    .result-value { font-size: 1.625rem; }
+}
