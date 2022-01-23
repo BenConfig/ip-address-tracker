@@ -4,6 +4,7 @@ const IP_SEARCH_BTN = document.querySelector('.ip-search-btn');
 const ERROR_MESSAGE = document.querySelector('.error-message');
 
 // Get 'result' elements
+const RESULTS_CONTAINER = document.getElementById('results')
 const IP = document.getElementById('ip');
 const SITUATION = document.getElementById('location');
 const TIME_ZONE = document.getElementById('time-zone');
@@ -15,6 +16,7 @@ let ipIsInvalid = false;
 
 function loadIPInfo(e) {
     e.preventDefault(); // Prevents form from submitting
+    RESULTS_CONTAINER.classList.add('loading');
     searchedIP = IP_SEARCH_FIELD.value.trim(); // If empty string, user's own details will display
 
     // Link to IP Geolocation API
@@ -45,6 +47,8 @@ function loadIPInfo(e) {
 
                 // Let marker match the coordinates from the IP Geolocation API
                 L.marker([data.location.lat, data.location.lng], {icon: myIcon}).addTo(map);
+
+                RESULTS_CONTAINER.classList.remove('loading');
             }
             else { // If IP address is invalid
                 ERROR_MESSAGE.classList.add('show');
